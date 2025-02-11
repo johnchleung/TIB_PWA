@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="./static/js/toggleGreyscale.js"></script>
+    <script src="./static/js/toggleLayout.js"></script>
+    <title>Dynamic Layout</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 35% 20% 20% 20% 60px;
+            gap: 10px;
+            transition: all 0.3s ease;
+            height: calc(100vh - 40px); /* Full height minus padding */
+        }
+        .section {
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center alignment */
+            font-size: 20px;
+        }
+        .section1 {
+            background-color: grey;
+        }
+        .section2 {
+            background-color: rgb(57, 96, 202);
+        }
+        .section3 {
+            background-color: orange;
+        }
+        .section4 {
+            background-color: #4b8f4b; /* Tortoise green */
+        }
+        .section5 {
+            height: 60px; /* Fixed height for Section 5 */
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: 10px; /* Space between buttons */
+        }
+        .layout-1 {
+            grid-template-columns: 1fr; /* Single column layout */
+            grid-template-rows: repeat(4, auto) 60px; /* Adjust for fixed height of Section 5 */
+        }
+        .layout-2 {
+            grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+            grid-template-rows: auto auto auto 60px; /* Three rows and fixed height for Section 5 */
+        }
+        .layout-2 .section:nth-child(1) {
+            grid-column: 1 / -1; /* Section 1 spans all columns */
+            grid-row: 2; /* Section 1 occupies the 2nd row */
+        }
+        .layout-2 .section:nth-child(2) {
+            grid-column: 1; /* Section 2 goes to the first column */
+            grid-row: 3; /* 3rd row */
+        }
+        .layout-2 .section:nth-child(3) {
+            grid-column: 2; /* Section 3 goes to the second column */
+            grid-row: 3; /* 3rd row */
+        }
+        .layout-2 .section:nth-child(4) {
+            grid-column: 3; /* Section 4 goes to the third column */
+            grid-row: 3; /* 3rd row */
+        }
+        .layout-2 .section:nth-child(5) {
+            grid-column: 1 / -1; /* Section 5 spans all columns */
+            grid-row: 4; /* Place in the last row */
+            height: 60px; /* Fixed height */
+            padding: 0 10px; /* Padding for aesthetics */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container layout-1" id="layoutContainer">
+    <div class="section section1">Floor Plan</div>
+    <div class="section section2">WITH onward boarding pass</div>
+    <div class="section section3">WITHOUT onward boarding pass</div>
+    <div class="section section4">Transfer to Mainland/Macao</div>
+    <div class="section section5">
+        <button class="shadcn-button" onclick="toggleGreyscale()" aria-label="Toggle Greyscale">
+            <i class="fas fa-adjust"></i>
+        </button>
+        <button onclick="toggleLayout()" aria-label="Toggle Layout">
+            <i class="fas fa-info-circle"></i>
+        </button>
+    </div>
+</div>
+
+<script>
+    let isLayout1 = true;
+
+    function toggleLayout() {
+        const container = document.getElementById('layoutContainer');
+        if (isLayout1) {
+            container.classList.remove('layout-1');
+            container.classList.add('layout-2');
+        } else {
+            container.classList.remove('layout-2');
+            container.classList.add('layout-1');
+        }
+        isLayout1 = !isLayout1; // Toggle the layout state
+    }
+</script>
+
+</body>
+</html>
