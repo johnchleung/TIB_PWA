@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
-def home(request):
-    return render(request, "home.html")
+def index(request):
+    return render(request, 'index.html')
+
+
+def offline(request):
+    return render(request, 'offline.html')

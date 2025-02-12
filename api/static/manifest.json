@@ -1,0 +1,16 @@
+{
+    "name": "TIB PWA Application",
+    "short_name": "TIB PWA",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "description": "A TIB Progressive Web Application.",
+    "form_factor": "wide",
+    "icons": [
+        {
+            "src": "./images/icon01.png",
+            "type": "image/png",
+            "sizes": "768x768"
+        }
+    ]
+}

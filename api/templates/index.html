@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="./static/js/toggleGreyscale.js"></script>
-    <script src="./static/js/toggleLayout.js"></script>
+    <link rel="manifest" href="{% static '/manifest.json' %}" />
+    <script src="{% static 'js/script.js' %}"></script>
+    {% comment %} <script src="{% static 'js/toggleLayout.js' %}"></script> {% endcomment %}
+    
     <title>Dynamic Layout</title>
     <style>
         body {
@@ -87,21 +90,34 @@
     </style>
 </head>
 <body>
-
-<div class="container layout-1" id="layoutContainer">
-    <div class="section section1">Floor Plan</div>
-    <div class="section section2">WITH onward boarding pass</div>
-    <div class="section section3">WITHOUT onward boarding pass</div>
-    <div class="section section4">Transfer to Mainland/Macao</div>
-    <div class="section section5">
-        <button class="shadcn-button" onclick="toggleGreyscale()" aria-label="Toggle Greyscale">
-            <i class="fas fa-adjust"></i>
-        </button>
-        <button onclick="toggleLayout()" aria-label="Toggle Layout">
-            <i class="fas fa-info-circle"></i>
-        </button>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register("{% static 'serviceworker.js' %}")
+                    .then(function(registration) {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch(function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="container layout-1" id="layoutContainer">
+        <div class="section section1">Floor Plan</div>
+        <div class="section section2">WITH onward boarding pass</div>
+        <div class="section section3">WITHOUT onward boarding pass</div>
+        <div class="section section4">Transfer to Mainland/Macao</div>
+        <div class="section section5">
+            <button class="shadcn-button" onclick="toggleGreyscale()" aria-label="Toggle Greyscale">
+                <i class="fas fa-adjust"></i>
+            </button>
+            <button onclick="toggleLayout()" aria-label="Toggle Layout">
+                <i class="fas fa-info-circle"></i>
+            </button>
+        </div>
     </div>
-</div>
 
 </body>
 </html>

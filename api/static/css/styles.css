@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, auto) 50px;
+    gap: 10px;
+    transition: all 0.3s ease;
+    height: calc(100vh - 40px); /* Full height minus padding */
+}
+.section {
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center alignment */
+    font-size: 20px;
+}
+.section1 {
+    background-color: grey;
+}
+.section2 {
+    background-color: rgb(57, 96, 202);
+}
+.section3 {
+    background-color: orange;
+}
+.section4 {
+    background-color: #4b8f4b; /* Tortoise green */
+}
+.section5 {
+    height: 60px; /* Fixed height for Section 5 */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 10px;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 10px; /* Space between buttons */
+}
+.layout-1 {
+    grid-template-columns: 1fr; /* Single column layout */
+    grid-template-rows: repeat(4, auto) 50px; /* Adjust for fixed height of Section 5 */
+}
+.layout-2 {
+    grid-template-columns: 1fr 1fr 1fr; /* Three equal columns */
+    grid-template-rows: auto auto auto 50px; /* Three rows and fixed height for Section 5 */
+}
+.layout-2 .section:nth-child(1) {
+    grid-column: 1 / -1; /* Section 1 spans all columns */
+    grid-row: 2; /* Section 1 occupies the 2nd row */
+}
+.layout-2 .section:nth-child(2) {
+    grid-column: 1; /* Section 2 goes to the first column */
+    grid-row: 3; /* 3rd row */
+}
+.layout-2 .section:nth-child(3) {
+    grid-column: 2; /* Section 3 goes to the second column */
+    grid-row: 3; /* 3rd row */
+}
+.layout-2 .section:nth-child(4) {
+    grid-column: 3; /* Section 4 goes to the third column */
+    grid-row: 3; /* 3rd row */
+}
+.layout-2 .section:nth-child(5) {
+    grid-column: 1 / -1; /* Section 5 spans all columns */
+    grid-row: 4; /* Place in the last row */
+    height: 60px; /* Fixed height */
+    padding: 0 10px; /* Padding for aesthetics */
+}
