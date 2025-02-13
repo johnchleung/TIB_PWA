@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from rest_framework import generics
+from rest_framework import viewsets
 from .serializers import *
 
 def index(request):
@@ -10,3 +10,6 @@ def index(request):
 def offline(request):
     return render(request, 'offline.html')
 
+class TbltibView(viewsets.ModelViewSet):
+    queryset = Tbltib.objects.all()
+    serializer_class = TbltibSerializer
