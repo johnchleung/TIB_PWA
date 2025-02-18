@@ -39,16 +39,16 @@
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Question</th>
-                        <th>Publish Date</th>
+                        <th>Name</th>
+                        <th>Info</th>
                         <!-- Add more columns for additional fields -->
                     </tr>
                 </thead>
                 <tbody>
-                    {% for question in questions %}
+                    {% for result in results %}
                         <tr>
-                            <td>{{ question.question_text }}</td>
-                            <td>{{ question.pub_date }}</td>
+                            <td>{{ result.fldName }}</td>
+                            <td>{{ result.fldValue }}</td>
                             <!-- Add more cells for additional fields -->
                         </tr>
                     {% endfor %}

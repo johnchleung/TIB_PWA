@@ -48,3 +48,17 @@ self.addEventListener('fetch', (event) => {
             })
     )
 });
+
+// self.addEventListener('fetch', (event) => {
+//     event.respondWith(
+//         caches.match(event.request).then((response) => {
+//             if (response) {
+//                 return response; // Return the cached response if found
+//             }
+//             return fetch(event.request).catch(() => {
+//                 // If the fetch fails, return the fallback page
+//                 return caches.match(OFFLINE_PATH);
+//             });
+//         })
+//     );
+// });

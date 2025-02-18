@@ -2,7 +2,7 @@
     "id": "index",
     "name": "TIB PWA Application",
     "short_name": "TIB PWA",
-    "start_url": "/",
+    "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
     "description": "A TIB Progressive Web Application.",

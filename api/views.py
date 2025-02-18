@@ -4,8 +4,8 @@ from rest_framework import viewsets
 from .serializers import *
 
 def index(request):
-    questions = ApiQuestion.objects.all()
-    return render(request, 'index.html', {'questions': questions})
+    results = General.objects.all()
+    return render(request, 'index.html', {'results': results})
 
 def offline(request):
     return render(request, 'offline.html')
