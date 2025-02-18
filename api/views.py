@@ -4,12 +4,12 @@ from rest_framework import viewsets
 from .serializers import *
 
 def index(request):
-    questions = Question.objects.all()
+    questions = ApiQuestion.objects.all()
     return render(request, 'index.html', {'questions': questions})
 
 def offline(request):
     return render(request, 'offline.html')
 
-class TbltibView(viewsets.ModelViewSet):
-    queryset = Tbltib.objects.all()
-    serializer_class = TbltibSerializer
+class TibView(viewsets.ModelViewSet):
+    queryset = Tib.objects.all()
+    serializer_class = TibSerializer
