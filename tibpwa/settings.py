@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import pymysql
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -81,11 +82,11 @@ pymysql.install_as_MySQLdb()
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tib',  # Replace with your database name
-        'USER': 'root',        # Replace with your database username
-        'PASSWORD': 'root',     # Replace with your database password
-        'HOST': 'localhost',            # Set to your database host
-        'PORT': '3306',                 # Default MariaDB port
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
 
